@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
+    Route::get('/getCounts', [App\Http\Controllers\HomeController::class, 'getCounts'])->name('getCounts');
+
+    Route::resource('products', ProductsController::class);
+    Route::get('/getProducts', [ProductsController::class, 'getProducts'])->name('getProducts');
 
 });
 

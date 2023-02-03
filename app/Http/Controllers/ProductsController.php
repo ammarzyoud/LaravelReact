@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Repositories\ProductsRepository;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+    protected $productsRepository;
+    public function __construct(ProductsRepository $productsRepository)
+    {
+      $this->productsRepository = $productsRepository;
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        return view('products.index');
     }
 
     /**
@@ -81,5 +89,10 @@ class ProductsController extends Controller
     public function destroy(Products $products)
     {
         //
+    }
+
+    public function getProducts()
+    {
+        return $this->productsRepository->getProducts();
     }
 }

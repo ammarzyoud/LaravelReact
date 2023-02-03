@@ -26,9 +26,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
+
+    public function getCounts()
+    {
         $usersCount = User::count();
         $categoriesCount = Categories::count();
         $productsCount = Products::count();
-        return view('home', compact('usersCount', 'categoriesCount', 'productsCount'));
+        return response()->json([
+            'usersCount' => $usersCount,
+            'categoriesCount' => $categoriesCount,
+            'productsCount' => $productsCount,
+        ]);
     }
+    
 }

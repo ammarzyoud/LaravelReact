@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
 	<div class="row">
 		<div class="col-md-4">
 			<div class="dbox dbox--color-1">
@@ -40,5 +40,6 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --}}
+<div id="dashboardBoxes"></div>
 @endsection
