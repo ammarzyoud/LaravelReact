@@ -45,7 +45,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->productsRepository->store($request);
     }
 
     /**
@@ -56,7 +56,7 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-        //
+        return view('products.edit');
     }
 
     /**

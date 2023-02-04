@@ -14,5 +14,6 @@ import './bootstrap';
 
 // import './components/Example';
 import './components/DashboardBoxes';
-import './components/Products';
-import './components/CreateProduct';
+import './components/Products/Products';
+import './components/Products/CreateProduct';
+import './components/Products/EditProduct';

@@ -51,9 +51,9 @@ function Products() {
                                 <button type="button" className="btn btn-danger m-2" onClick={() => removQty(item.id, item.quantity)}>
                                     <i className="bi bi-dash"></i>
                                 </button>
-                                <button type="button" className="btn btn-outline-info m-2">
+                                <a href={"/products/" + item.id} className="btn btn-outline-info m-2">
                                     <i className="bi bi-pen"></i>
-                                </button>
+                                </a>
                                 <button type="button" className="btn btn-outline-danger m-2">
                                     <i className="bi bi-trash3"></i>
                                 </button>
