@@ -51,12 +51,13 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show($id)
     {
-        return view('products.edit');
+        $product_id = $id;
+        return view('products.edit', compact('product_id'));
     }
 
     /**
@@ -74,12 +75,12 @@ class ProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Products  $products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, $id)
     {
-        //
+        return $this->productsRepository->update($request, $id);
     }
 
     /**
@@ -96,6 +97,11 @@ class ProductsController extends Controller
     public function getProducts()
     {
         return $this->productsRepository->getProducts();
+    }
+    
+    public function getSingleProduct(Request $request)
+    {
+        return $this->productsRepository->getSingleProduct($request);
     }
 
     public function removeQty(Request $request)

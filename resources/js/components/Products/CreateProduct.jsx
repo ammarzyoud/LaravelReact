@@ -69,7 +69,6 @@ function CreateProduct() {
         axios.post('/products', formData).then(res => {
             if (res.status) {
                 swal("Success", "Product has been created", "success");
-
                 setName('');
                 setProductCategories([]);
                 setPrice(1);

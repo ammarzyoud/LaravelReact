@@ -25,8 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Products
     Route::resource('products', ProductsController::class);
     Route::get('/getProducts', [ProductsController::class, 'getProducts'])->name('getProducts');
+    Route::get('/getSingleProduct', [ProductsController::class, 'getSingleProduct'])->name('getSingleProduct');
+    Route::post('/updateProduct/{id}', [ProductsController::class, 'update'])->name('updateProduct');
     Route::post('/removeQty', [ProductsController::class, 'removeQty'])->name('removeQty');
-
+    
     // 
     Route::get('/getSelectCategories', [CategoriesController::class, 'getSelectCategories'])->name('getSelectCategories');
 });

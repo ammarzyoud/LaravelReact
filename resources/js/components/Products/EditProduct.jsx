@@ -4,7 +4,7 @@ import axios from "axios";
 import Select from 'react-select';
 import swal from 'sweetalert';
 
-function EditProduct() {
+function EditProduct(props) {
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -12,11 +12,20 @@ function EditProduct() {
     const [price, setPrice] = useState(1);
     const [qty, setQty] = useState(1);
     const [image, setImage] = useState();
+    const [imagePath, setImagePath] = useState();
     const [imageKey, setImageKey] = useState();
     
     useEffect(() => {
-        axios.get('/getSelectCategories').then(res => {
+        let product_id = props.product_id;
+        axios.get(`/getSingleProduct?product_id=${product_id}`).then(res => {
+            let product = res.data.product;
             setCategories(res.data.categories);
+            setName(product.name);
+            setProductCategories(product.categories);
+            setPrice(product.price);
+            setQty(product.quantity);
+            setDescription(product.description);
+            setImagePath(product.image);
         });
     }, []);
 
@@ -66,17 +75,10 @@ function EditProduct() {
             formData.append("file", image);
         }
 
-        axios.post('/products', formData).then(res => {
+        axios.post(`/updateProduct/${props.product_id}`, formData).then(res => {
+            console.log(res);
             if (res.status) {
-                swal("Success", "Product has been created", "success");
-
-                setName('');
-                setProductCategories([]);
-                setPrice(1);
-                setQty(1);
-                setDescription('');
-                setImage('');
-                setImageKey(Math.random().toString(36));
+                swal("Success", "Product has been updated", "success");
             }
         });
     }
@@ -125,6 +127,7 @@ function EditProduct() {
                         <label htmlFor="image">Image</label>
                         <input type="file" className="form-control" name="image" onChange={imageChange} key={imageKey} />
                     </div>
+                    {imagePath && <img className="mt-3" alt={name} src={imagePath} width="100"/>}
                 </div>
                 <div className="col-md-6">
                     <div className="form-group">
@@ -142,10 +145,10 @@ export default EditProduct;
 
 if (document.getElementById('editProduct')) {
     const Index = ReactDOM.createRoot(document.getElementById("editProduct"));
-
+    const product_id = document.getElementById('editProduct').getAttribute("product_id");
     Index.render(
         <React.StrictMode>
-            <EditProduct />
+            <EditProduct product_id={product_id} />
         </React.StrictMode>
     )
 }

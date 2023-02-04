@@ -9,5 +9,5 @@
     </div>
     <hr>
 </div>
-<div id="editProduct"></div>
+<div id="editProduct" product_id="{{ $product_id }}"></div>
 @endsection
