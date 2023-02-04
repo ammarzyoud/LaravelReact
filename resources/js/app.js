@@ -17,3 +17,7 @@ import './components/DashboardBoxes';
 import './components/Products/Products';
 import './components/Products/CreateProduct';
 import './components/Products/EditProduct';
+// 
+import './components/Categories/Categories';
+import './components/Categories/CreateCategory';
+import './components/Categories/EditCategory';

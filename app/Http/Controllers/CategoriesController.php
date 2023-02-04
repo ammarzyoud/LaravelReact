@@ -21,7 +21,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('categories.index');
     }
 
     /**
@@ -31,7 +31,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -42,18 +42,19 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->categoriesRepository->store($request);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show($id)
     {
-        //
+        $category_id = $id;
+        return view('categories.edit', compact('category_id'));
     }
 
     /**
@@ -71,23 +72,33 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categories  $categories
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(Request $request, $id)
     {
-        //
+        return $this->categoriesRepository->update($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categories  $categories
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy($id)
     {
-        //
+        return $this->categoriesRepository->destroy($id);
+    }
+
+    public function getCategories()
+    {
+        return $this->categoriesRepository->getCategories();
+    }
+
+    public function getSingleCategory(Request $request)
+    {
+        return $this->categoriesRepository->getSingleCategory($request);
     }
 
     public function getSelectCategories()

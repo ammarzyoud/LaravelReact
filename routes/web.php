@@ -29,7 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/updateProduct/{id}', [ProductsController::class, 'update'])->name('updateProduct');
     Route::post('/removeQty', [ProductsController::class, 'removeQty'])->name('removeQty');
     
-    // 
+    // Categories
+    Route::resource('categories', CategoriesController::class);
+    Route::get('/getCategories', [CategoriesController::class, 'getCategories'])->name('getCategories');
+    Route::get('/getSingleCategory', [CategoriesController::class, 'getSingleCategory'])->name('getSingleCategory');
+    Route::post('/updateCategory/{id}', [CategoriesController::class, 'update'])->name('updateProduct');
     Route::get('/getSelectCategories', [CategoriesController::class, 'getSelectCategories'])->name('getSelectCategories');
 });
 
