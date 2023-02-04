@@ -14,7 +14,7 @@ function EditProduct(props) {
     const [image, setImage] = useState();
     const [imagePath, setImagePath] = useState();
     const [imageKey, setImageKey] = useState();
-    
+
     useEffect(() => {
         let product_id = props.product_id;
         axios.get(`/getSingleProduct?product_id=${product_id}`).then(res => {
@@ -32,7 +32,7 @@ function EditProduct(props) {
     const nameChange = (e) => {
         setName(e.target.value);
     }
-    
+
     const categoryChange = (e) => {
         setProductCategories(e);
     }
@@ -52,18 +52,22 @@ function EditProduct(props) {
     const imageChange = (e) => {
         if (e.target.files) {
             setImage(e.target.files[0]);
-          }
+        }
     }
 
     const handleSubmit = () => {
         if (name == '') {
             swal("Validation Error!", "Name field is required", "error");
+            return;
         } else if (product_categorie.length == 0) {
             swal("Validation Error!", "You should select one Category or more", "error");
+            return;
         } else if (price <= 0) {
             swal("Validation Error!", "Price should be more than 0", "error");
+            return;
         } else if (qty <= 0) {
             swal("Validation Error!", "Quantity should be more than 0", "error");
+            return;
         }
         let formData = new FormData();
         formData.append("name", name);
@@ -127,7 +131,7 @@ function EditProduct(props) {
                         <label htmlFor="image">Image</label>
                         <input type="file" className="form-control" name="image" onChange={imageChange} key={imageKey} />
                     </div>
-                    {imagePath && <img className="mt-3" alt={name} src={imagePath} width="100"/>}
+                    {imagePath && <img className="mt-3" alt={name} src={imagePath} width="100" />}
                 </div>
                 <div className="col-md-6">
                     <div className="form-group">
