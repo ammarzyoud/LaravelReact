@@ -92,6 +92,20 @@ class ProductsRepository
         return $product;
     }
 
+    public function destroy($id)
+    {
+        $product = Products::find($id);
+        $product->delete();
+        CategoriesProducts::where('products_id', $product->id)->delete();
+        $products = Products::orderBy('updated_at', 'desc')->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Product has been deleted',
+            'products' => $products,
+        ]);
+    }
+
     public function removeQty($request)
     {
         $product = Products::find($request->id);

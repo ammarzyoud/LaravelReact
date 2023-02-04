@@ -26,6 +26,33 @@ function Products() {
         });
     }
 
+    const deleteProduct = (id) => {
+        swal({
+            title: "Are you sure ??",
+            text: "You will not be able to recover this product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            confirmDelete(id);
+          }
+        });
+    }
+
+    const confirmDelete = (id) => {
+        axios.delete(`/products/${id}`, {
+            id,
+        }).then(res => {
+            console.log(res);
+            if (res.status) {
+                swal("Deleted!", "Product has been deleted.", "success");
+                setProducts(res.data.products);
+            }
+        });
+    }
+
     return (
         <div className="container">
             <table className="table table-striped">
@@ -54,7 +81,7 @@ function Products() {
                                 <a href={"/products/" + item.id} className="btn btn-outline-info m-2">
                                     <i className="bi bi-pen"></i>
                                 </a>
-                                <button type="button" className="btn btn-outline-danger m-2">
+                                <button onClick={() => deleteProduct(item.id)} className="btn btn-outline-danger m-2">
                                     <i className="bi bi-trash3"></i>
                                 </button>
                             </td>
