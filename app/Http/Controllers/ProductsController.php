@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Repositories\ProductsRepository;
+use App\Repositories\CategoriesRepository;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
     protected $productsRepository;
-    public function __construct(ProductsRepository $productsRepository)
+    protected $categoriesRepository;
+    public function __construct(ProductsRepository $productsRepository, CategoriesRepository $categoriesRepository)
     {
-      $this->productsRepository = $productsRepository;
-
+        $this->productsRepository = $productsRepository;
+        $this->categoriesRepository = $categoriesRepository;
     }
 
     /**
@@ -32,7 +34,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -94,5 +96,10 @@ class ProductsController extends Controller
     public function getProducts()
     {
         return $this->productsRepository->getProducts();
+    }
+
+    public function removeQty(Request $request)
+    {
+        return $this->productsRepository->removeQty($request);
     }
 }

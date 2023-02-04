@@ -27,7 +27,7 @@ function DashboardBoxes() {
                         </div>
 
                         <div className="dbox__action">
-                            <button className="dbox__action__btn">More Info</button>
+                            <a href="/users" className="dbox__action__btn">More Info</a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ function DashboardBoxes() {
                         </div>
 
                         <div className="dbox__action">
-                            <button className="dbox__action__btn">More Info</button>
+                            <a href="/categories" className="dbox__action__btn">More Info</a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ function DashboardBoxes() {
                         </div>
 
                         <div className="dbox__action">
-                            <button className="dbox__action__btn">More Info</button>
+                            <a href="/products" className="dbox__action__btn">More Info</a>
                         </div>
                     </div>
                 </div>

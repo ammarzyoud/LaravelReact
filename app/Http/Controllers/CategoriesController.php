@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Repositories\CategoriesRepository;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
+    protected $categoriesRepository;
+    public function __construct(CategoriesRepository $categoriesRepository)
+    {
+        $this->categoriesRepository = $categoriesRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -81,5 +88,10 @@ class CategoriesController extends Controller
     public function destroy(Categories $categories)
     {
         //
+    }
+
+    public function getSelectCategories()
+    {
+        return $this->categoriesRepository->getSelectCategories();
     }
 }

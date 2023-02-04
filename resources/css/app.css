@@ -1,4 +1,7 @@
 /*  */
+.form-control {
+    background-color: #fff !important;
+}
 
 .dbox {
     position: relative;

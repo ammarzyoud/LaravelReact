@@ -15,3 +15,4 @@ import './bootstrap';
 // import './components/Example';
 import './components/DashboardBoxes';
 import './components/Products';
+import './components/CreateProduct';
