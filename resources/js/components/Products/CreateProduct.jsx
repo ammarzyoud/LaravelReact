@@ -49,12 +49,16 @@ function CreateProduct() {
     const handleSubmit = () => {
         if (name == '') {
             swal("Validation Error!", "Name field is required", "error");
+            return;
         } else if (product_categorie.length == 0) {
             swal("Validation Error!", "You should select one Category or more", "error");
+            return;
         } else if (price <= 0) {
             swal("Validation Error!", "Price should be more than 0", "error");
+            return;
         } else if (qty <= 0) {
             swal("Validation Error!", "Quantity should be more than 0", "error");
+            return;
         }
         let formData = new FormData();
         formData.append("name", name);

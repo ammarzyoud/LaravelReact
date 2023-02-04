@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Models\Products;
 use App\Models\CategoriesProducts;
 use App\Models\Categories;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsRepository

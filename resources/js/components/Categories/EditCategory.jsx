@@ -26,7 +26,6 @@ function EditCategory(props) {
         formData.append("name", name);
 
         axios.post(`/updateCategory/${props.category_id}`, formData).then(res => {
-            console.log(res);
             if (res.status) {
                 swal("Success", "Category has been updated", "success");
             }

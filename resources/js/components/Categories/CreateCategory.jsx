@@ -13,6 +13,7 @@ function CreateCategory() {
     const handleSubmit = () => {
         if (name == '') {
             swal("Validation Error!", "Name field is required", "error");
+            return;
         } 
         let formData = new FormData();
         formData.append("name", name);

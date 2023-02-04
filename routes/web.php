@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +34,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('categories', CategoriesController::class);
     Route::get('/getCategories', [CategoriesController::class, 'getCategories'])->name('getCategories');
     Route::get('/getSingleCategory', [CategoriesController::class, 'getSingleCategory'])->name('getSingleCategory');
-    Route::post('/updateCategory/{id}', [CategoriesController::class, 'update'])->name('updateProduct');
+    Route::post('/updateCategory/{id}', [CategoriesController::class, 'update'])->name('updateCategory');
     Route::get('/getSelectCategories', [CategoriesController::class, 'getSelectCategories'])->name('getSelectCategories');
+
+    // Users
+    Route::resource('users', UsersController::class);
+    Route::get('/getUsers', [UsersController::class, 'getUsers'])->name('getUsers');
+    Route::get('/getSingleUser', [UsersController::class, 'getSingleUser'])->name('getSingleUser');
+    Route::post('/updateUser/{id}', [UsersController::class, 'update'])->name('updateUser');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -17,7 +17,11 @@ import './components/DashboardBoxes';
 import './components/Products/Products';
 import './components/Products/CreateProduct';
 import './components/Products/EditProduct';
-// 
+// Categories
 import './components/Categories/Categories';
 import './components/Categories/CreateCategory';
 import './components/Categories/EditCategory';
+// Users
+import './components/Users/Users';
+import './components/Users/CreateUser';
+import './components/Users/EditUser';
