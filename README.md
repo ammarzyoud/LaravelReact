@@ -1,7 +1,7 @@
 To start the project you need to:
 
     Run composer install
-    Copy .env.example adn rename to .env
+    Copy .env.example and rename to .env
     Then Run:
     npm install 
     If there is an issue with npm install use --force tag to solve it
